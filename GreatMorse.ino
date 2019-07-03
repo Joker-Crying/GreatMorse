@@ -1,7 +1,15 @@
 #include <Morse.h>
 #include <Morse.h>
 Morse morse(13);
-char MORSE[][4] = {
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  char MORSE[][4] = {
   {'.', '-', '*', '*'}, //A
   {'-', '.', '.', '.'}, //B
   {'-', '.', '-', '.'}, //C
@@ -31,14 +39,6 @@ char MORSE[][4] = {
   {'-', '-', '-', '*'},//回车
   {'*', '-', '*', '-'} //空格
 };
-
-void setup()
-{
-  Serial.begin(9600);
-}
-
-void loop()
-{
   String ls = "";
   String morse_s = "";
   int i, t , temp = 0;
@@ -75,10 +75,14 @@ void loop()
     Serial.println(morse_s);
     for(i = 0; morse_s[i]!='\0' ; i++)
     {
-      if(morse_s[i] == '.')morse.dot();
-      else if(morse_s[i] == '-')morse.dash();
-      else if(morse_s[i] == ' ')morse.w_space();
-      if (morse_s[i] != ' ' && ls[i] != '*')morse.c_space();
+      if(morse_s[i] == '.')
+        morse.dot();
+      else if(morse_s[i] == '-')
+        morse.dash();
+      else if(morse_s[i] == ' ')
+        morse.w_space();
+      if (morse_s[i] != ' ' && ls[i] != '*')
+        morse.c_space();
     }
     delay(2);
   }
