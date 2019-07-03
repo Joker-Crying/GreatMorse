@@ -80,7 +80,6 @@ void loop()
       else if(morse_s[i] == ' ')morse.w_space();
       if (morse_s[i] != ' ' && ls[i] != '*')morse.c_space();
     }
-    Serial.println("发送完毕");
     delay(2);
   }
 }
