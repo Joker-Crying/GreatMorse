@@ -1,0 +1,65 @@
+int pin = 13;
+void setup()
+{
+pinMode(pin, OUTPUT);
+}
+void loop()
+{
+  String str="";
+  int i,t,n=0; 
+  while (Serial.available() > 0) 
+    {
+      str += char(Serial.read());
+      delay(2);
+      n++;
+    }
+   for(i=0;i<n;i++)
+   {
+    switch(int(str[i]))
+      {
+        case 97:{dot();dash();}//a
+        case 98:{dash();dot();dot();dot();}//b
+        case 99:{dash();dot();dash();dot();}//c
+        case 100:{dash();dot();dot();}//d
+        case 101:{dot();}//e
+        case 102:{dot();dot();dash();dot();}//f
+        case 103:{dash();dash();dot();}//g
+        case 104:{dot();dot();dot();dot();}//h
+        case 105:{dot();dot();}//i
+        case 106:{dot();dash();dash();dash();}//j
+        case 107:{dash();dot();dash();}//k
+        case 108:{dot();dash();dot();dot();}//l
+        case 109:{dash();dash();}//m
+        case 110:{dash();dot();}//n
+        case 111:{dash();dash();dash();}//o
+        case 112:{dot();dash();dash();dot();}//p
+        case 113:{dash();dash();dot();dash();}//q
+        case 114:{dot();dash();dot();}//r
+        case 115:{dot();dot();dot();}//s
+        case 116:{dash();}//t
+        case 117:{dot();dot();dash();}//u
+        case 118:{dot();dot();dot();dash();}//v
+        case 119:{dot();dash();dash();}//w
+        case 120:{dash();dot();dot();dash();}//x
+        case 121:{dash();dot();dash();dash();}//y
+        case 122:{dash();dash();dot();dot();}//z
+        case 32:{dash();dash();dash();dash();dash();}//空格-----
+        case 13:{dot();dash();dash();dash();dash();}//回车----
+        }
+    }
+delay(3000);
+}
+void dot()
+{
+digitalWrite(pin, HIGH);
+delay(250);
+digitalWrite(pin, LOW);
+delay(250);
+}
+void dash()
+{
+digitalWrite(pin, HIGH);
+delay(1000);
+digitalWrite(pin, LOW);
+delay(250);
+}
